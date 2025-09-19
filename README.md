@@ -22,6 +22,11 @@ It uses Jinja2 templates, WeasyPrint, and ReportLab to export professional-quali
 
 📂 Automatic PDF saving with proper formatting
 
+## 📸 Screenshots  
+
+![App Screenshot](doc_generator_home.jpg)
+
+
 🛠️ Installation & Usage
 
 Run the following commands step by step in your terminal (PyCharm / VS Code / Command Prompt):
@@ -59,7 +64,7 @@ DocsGenerator/
 │── card_maker.py        # Custom card generator module
 │── TC_gui.py            # GUI for Transfer Certificate
 │── TC_generator.py      # Transfer Certificate PDF generator
-│── templates/           # Jinja2 templates (HTML for cards/TCs)
+│── templates/           # Jinja2 templates (HTML for cards/ID)
 │── requirements.txt     # Dependencies
 │── README.md            # Project documentation
 
@@ -76,5 +81,6 @@ Transfer Certificate (TC)
 Custom Card
 
 Fill in the details in the form.
+
 
 Export your document as a PDF instantly.
