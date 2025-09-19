@@ -1,0 +1,14 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+venv/
+.venv/
+
+# Ignore exported PDFs or temp files
+*.pdf
+
+# Ignore local logs
+*.log
