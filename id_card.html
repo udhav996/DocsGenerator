@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ID Card</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .id-card {
+      width: 350px;
+      height: 550px;
+      margin: 20px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      border: 3px solid #fff;
+    }
+
+    .decorative-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+      z-index: 0 !important;
+    }
+
+    .decorative-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+      z-index: 0 !important;
+    }
+
+    .header {
+      text-align: center;
+      padding: 25px 20px 15px;
+      position: relative;
+      z-index: 2;
+      margin-top:-20px;
+    }
+
+    .header img {
+      height: 65px;
+      width: 65px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .header h2 {
+      font-size: 13px;
+      margin: 10px 0 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #2c3e50;
+      line-height: 1.3;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .photo-container {
+      text-align: center;
+      margin: -10px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .photo-frame {
+      display: inline-block;
+      padding: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .photo img {
+      height: 115px;
+      width: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid #fff;
+    }
+
+    .name {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 15px 0;
+      color: #2c3e50;
+      text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .info {
+      font-size: 12px;
+      padding: 0 25px;
+      line-height: 1.6;
+      color: #34495e;
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      margin: 0 15px;
+      padding: 15px 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .info p {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .info b {
+      display: inline-block;
+      width: 110px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .info-value {
+      font-weight: 500;
+      color: #34495e;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .barcode {
+      margin: -30px 0; /* reduced so signature won't be pushed away */
+    }
+
+.bottom-bar {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.barcode img {
+  height: 35px;
+  width: 120px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.barcode {
+  margin-bottom: -12px;   /* ⬆ moves barcode upward */
+}
+
+.signature-section {
+  text-align: center;
+  margin-right: 12px;   /* ⬅ moves signature left */
+}
+
+.signature-section img {
+  width: 120px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.signature-text {
+  font-size: 9px;
+  margin-top: 3px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+    .academic-year {
+  position: absolute;
+  top: 80%;
+  left: 60px;  /* inside card border */
+  right: -260px;
+  transform: translateY(-50%) rotate(-270deg);
+  font-size: 11px;
+  font-weight: 600;
+  color: #34495e;
+  z-index: 5;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+
+    /* === Minimal fix for unwanted overlays (kept) === */
+    .id-card::before,
+    .id-card::after {
+      content: none !important;
+      display: none !important;
+      background: none !important;
+    }
+
+    .id-card .overlay,
+    .id-card .pattern-overlay,
+    .id-card .stripes,
+    .id-card .lines,
+    .id-card [class*="overlay"],
+    .id-card [class*="stripe"],
+    .id-card [class*="line"] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="id-card">
+    <div class="decorative-top"></div>
+    <div class="decorative-bottom"></div>
+
+    <div class="academic-year">Academic Year: 2025-26</div>
+
+    <div class="header">
+      <img src="{{ college_logo }}" alt="College Logo">
+      <h2>Shiv Chhatrapati Shikshan Sanstha's<br>RAJARSHI SHAHU MAHAVIDYALAYA,<br>LATUR (AUTONOMOUS)</h2>
+    </div>
+
+    <div class="photo-container">
+      <div class="photo-frame">
+        <div class="photo">
+          <img src="{{ photo }}" alt="Student Photo">
+        </div>
+      </div>
+    </div>
+
+    <div class="name">{{ name }}</div>
+
+    <div class="info">
+      <p><b>DOB:</b> <span class="info-value">{{ dob }}</span></p>
+      <p><b>Admission Date:</b> <span class="info-value">{{ admission_date }}</span></p>
+      <p><b>Address:</b> <span class="info-value">{{ address }}</span></p>
+      <p><b>Class:</b> <span class="info-value">{{ course }}</span></p>
+      <p><b>ID No.:</b> <span class="info-value">{{ id_no }}</span></p>
+    </div>
+
+ <div class="bottom-bar">
+  <div class="barcode">
+    <img src="{{ barcode_url }}" alt="Barcode">
+  </div>
+  <div class="signature-section">
+    <img id="sig" src="{{ signature_url }}" alt="Signature">
+    <div class="signature-text">Principal Signature</div>
+  </div>
+</div>
+
+
+  </div>
+
+  {% raw %}
+<script>
+    (function(){
+      var s = document.getElementById('sig');
+      var placeholder = 'https://via.placeholder.com/90x32.png?text=Sign';
+      function setPlaceholder(){
+        if(!s) return;
+        try {
+          var srcAttr = s.getAttribute('src');
+          if(!srcAttr || srcAttr.trim() === '' || srcAttr.indexOf('{{') !== -1) {
+            s.src = placeholder;
+            return;
+          }
+          if(s.src === location.href) {
+            s.src = placeholder;
+            return;
+          }
+        } catch(e){
+          s.src = placeholder;
+        }
+      }
+      s.onerror = function(){ this.onerror = null; this.src = placeholder; };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setPlaceholder);
+      } else {
+        setPlaceholder();
+      }
+    })();
+</script>
+{% endraw %}
+
+</body>
+</html>

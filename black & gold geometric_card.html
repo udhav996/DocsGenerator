@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ name }} - Visiting Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      width: 500px;
+      height: 300px;
+      border-radius: 20px;
+      margin: 40px auto;
+      background: #ffffff;
+      display: flex;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+    }
+
+    .left {
+      width: 65%;
+      padding: 45px 40px;
+      background: #ffffff;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      z-index: 10;
+      padding-top: 15px;
+
+    }
+
+.left h2 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.left h2::after {
+  content: "";
+  display: block;
+  width: 60px; /* adjust line width */
+  height: 2px;
+  background: linear-gradient(to right, #d4af37, #f4d03f); /* golden gradient */
+  margin-top: 6px;
+}
+
+
+    /* Golden accent line */
+    .left::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #d4af37, #f4d03f, #d4af37);
+    }
+
+    .left h1 {
+      font-size: 32px;
+      margin: 0 0 8px 0;
+      color: #1a1a1a;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .left h2 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
+      margin: 0 0 35px 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .info p {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .info .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(44, 62, 80, 0.3);
+    }
+
+    .right {
+      width: 35%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Geometric shapes */
+    .geometric-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    }
+
+    /* Golden geometric elements */
+    .geo-shape-1 {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #d4af37, #f4d03f);
+      transform: rotate(45deg);
+      opacity: 0.9;
+      border-radius: 8px;
+    }
+
+    .geo-shape-2 {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #d4af37, #f1c40f);
+      transform: rotate(30deg);
+      opacity: 0.8;
+      border-radius: 12px;
+    }
+
+    .geo-shape-3 {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(225deg, #f39c12, #d4af37);
+      transform: translateY(-50%) rotate(60deg);
+      opacity: 0.7;
+      border-radius: 6px;
+    }
+
+    /* Dotted pattern */
+    .dots {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background-image: radial-gradient(circle, #d4af37 2px, transparent 2px);
+      background-size: 8px 8px;
+      opacity: 0.6;
+    }
+
+    /* Triangular elements */
+    .triangle-1 {
+      position: absolute;
+      bottom: 60px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #d4af37;
+      opacity: 0.8;
+    }
+
+    .triangle-2 {
+      position: absolute;
+      top: 80px;
+      left: 15px;
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 20px solid #f1c40f;
+      opacity: 0.6;
+    }
+
+    /* Logo area */
+    .right .logo {
+      text-align: center;
+      position: relative;
+      z-index: 15;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .right .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #d4af37;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .right .logo h3 {
+      font-size: 16px;
+      margin: 0;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      word-wrap: break-word;
+      max-width: 120px;
+    }
+
+    .right .logo p {
+      font-size: 11px;
+      margin: 8px 0 0 0;
+      color: #d4af37;
+      font-weight: 400;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+      word-wrap: break-word;
+      max-width: 120px;
+    }
+
+    /* Golden accent lines */
+    .accent-line-1 {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #d4af37, transparent);
+      transform: rotate(15deg);
+    }
+
+    .accent-line-2 {
+      position: absolute;
+      bottom: 40px;
+      left: 30px;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #f1c40f, transparent);
+      transform: rotate(-20deg);
+    }
+
+    /* Hover effects */
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover .geo-shape-1 {
+      transform: rotate(45deg) scale(1.1);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .geo-shape-2 {
+      transform: rotate(30deg) scale(1.05);
+      transition: transform 0.4s ease;
+    }
+
+    .info .icon:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <h1>{{ name }}</h1>
+      <h2>{{ title }}</h2>
+      <div class="info">
+        <p><span class="icon">📞</span>{{ phone }}</p>
+        <p><span class="icon">✉️</span>{{ email }}</p>
+        <p><span class="icon">📍</span>{{ address }}</p>
+        {% if website %}
+        <p><span class="icon">🌐</span>{{ website }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="right">
+      <div class="geometric-bg"></div>
+      <div class="geo-shape-1"></div>
+      <div class="geo-shape-2"></div>
+      <div class="geo-shape-3"></div>
+      <div class="dots"></div>
+      <div class="triangle-1"></div>
+      <div class="triangle-2"></div>
+      <div class="accent-line-1"></div>
+      <div class="accent-line-2"></div>
+      <div class="logo">
+        <img src="{{ logo_url }}" alt="Business Logo">
+        <h3>{{ name if name else 'Business' }}</h3>
+        <p>{{ title if title else 'Professional' }}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

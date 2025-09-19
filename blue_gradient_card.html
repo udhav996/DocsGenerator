@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ name }} - Visiting Card</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f8ff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      width: 500px;
+      height: 300px;
+      border-radius: 25px;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 123, 191, 0.15);
+      background: #ffffff;
+      position: relative;
+    }
+
+    .left {
+      width: 60%;
+      padding: 50px 40px;
+      background: #ffffff;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      z-index: 10;
+      padding-top:15px;
+    }
+
+    .left h1 {
+      font-size: 30px;
+      margin: 0 0 12px 0;
+      color: #1a2b3d;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1.0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .left h2 {
+      font-size: 17px;
+      font-weight: 500;
+      color: #64748b;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.5px;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    /* Blue accent line under title */
+    .left h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      border-radius: 2px;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #334155;
+      font-family: 'Inter', sans-serif;
+      margin-top: 25px;
+    }
+
+    .info p {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .info .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-right: 15px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .right {
+      width: 40%;
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 50%, #004085 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Flowing curved design elements */
+    .wave-1 {
+      position: absolute;
+      top: -100px;
+      left: -50px;
+      width: 200px;
+      height: 400px;
+      background: linear-gradient(45deg, #17a2b8, #007bff);
+      border-radius: 50%;
+      transform: rotate(-15deg);
+      opacity: 0.8;
+    }
+
+    .wave-2 {
+      position: absolute;
+      bottom: -150px;
+      right: -80px;
+      width: 250px;
+      height: 350px;
+      background: linear-gradient(135deg, #0056b3, #004085);
+      border-radius: 50%;
+      transform: rotate(20deg);
+      opacity: 0.7;
+    }
+
+    .wave-3 {
+      position: absolute;
+      top: 50%;
+      left: -30px;
+      width: 150px;
+      height: 200px;
+      background: linear-gradient(225deg, #20c997, #17a2b8);
+      border-radius: 50%;
+      transform: translateY(-50%) rotate(-25deg);
+      opacity: 0.6;
+    }
+
+    /* Accent curves like in the image */
+    .accent-curve-1 {
+      position: absolute;
+      top: -50px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .accent-curve-2 {
+      position: absolute;
+      bottom: -30px;
+      left: 10px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Logo area with glassmorphism effect */
+    .right .logo {
+      text-align: center;
+      position: relative;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .right .logo img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+    }
+
+    .right .logo h3 {
+      font-size: 18px;
+      margin: 0;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      word-wrap: break-word;
+      max-width: 130px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .right .logo p {
+      font-size: 12px;
+      margin: 8px 0 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+      word-wrap: break-word;
+      max-width: 130px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Decorative elements */
+    .blue-accent {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+      width: 40px;
+      height: 6px;
+      background: linear-gradient(to right, #17a2b8, #007bff);
+      border-radius: 3px;
+      opacity: 0.8;
+    }
+
+    .circle-accent {
+      position: absolute;
+      bottom: 20px;
+      right: 15px;
+      width: 12px;
+      height: 12px;
+      background: #17a2b8;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    /* Hover animations */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(0, 123, 191, 0.25);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover .wave-1 {
+      transform: rotate(-15deg) scale(1.05);
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .wave-2 {
+      transform: rotate(20deg) scale(1.03);
+      transition: transform 0.5s ease;
+    }
+
+    .info .icon:hover {
+      transform: scale(1.15);
+      transition: transform 0.2s ease;
+    }
+
+    .right .logo:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transition: background 0.3s ease;
+    }
+
+    /* Responsive text sizing */
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+        height: 280px;
+      }
+
+      .left h1 {
+        font-size: 28px;
+      }
+
+      .left h2 {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <h1>{{ name }}</h1>
+      <h2>{{ title }}</h2>
+      <div class="info">
+        <p><span class="icon">📞</span>{{ phone }}</p>
+        <p><span class="icon">✉️</span>{{ email }}</p>
+        <p><span class="icon">📍</span>{{ address }}</p>
+        {% if website %}
+        <p><span class="icon">🌐</span>{{ website }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="right">
+      <div class="wave-1"></div>
+      <div class="wave-2"></div>
+      <div class="wave-3"></div>
+      <div class="accent-curve-1"></div>
+      <div class="accent-curve-2"></div>
+      <div class="blue-accent"></div>
+      <div class="circle-accent"></div>
+      <div class="logo">
+        <img src="{{ logo_url }}" alt="Business Logo">
+        <h3>{{ name if name else 'Business' }}</h3>
+        <p>{{ title if title else 'Professional' }}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
